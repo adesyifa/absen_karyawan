@@ -1,0 +1,134 @@
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+}
+
+body {
+	background: #968f8f;
+	font-family: "Poppins", sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	width: 800px;
+	height: 450px;
+	background: #ffffff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.left {
+	background: #fcedc2;
+	width: 40%;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.left h1 {
+	font-size: 22px;
+	font-weight: 600;
+	color: #000;
+}
+
+.right {
+	width: 60%;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.right h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.right label {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.right input {
+	width: 94%;
+	padding: 14px;
+	margin-top: 5px;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+	background-color: #c4bb91;
+	font-size: 14px;
+	transition: 0.3s ease-in-out;
+}
+
+.right input:focus {
+	border: 1px solid #b5a678;
+	outline: none;
+	background-color: #e6ddaa;
+}
+
+button {
+	width: 100%;
+	padding: 12px;
+	background-color: #b5a678;
+	color: #000;
+	font-size: 16px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 20px;
+	font-weight: bold;
+	transition: 0.3s ease-in-out;
+}
+
+button:hover {
+	background-color: #a8986f;
+	transform: scale(1.02);
+}
+
+.forgot_link {
+	display: block;
+	text-align: right;
+	font-size: 12px;
+	color: #666;
+	margin-top: 5px;
+	text-decoration: none;
+}
+
+.forgot_link:hover {
+	color: #333;
+	text-decoration: underline;
+}
+
+/* Pesan sukses/gagal */
+.message {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.success {
+	color: green;
+	background: #d4edda;
+	border: 1px solid #c3e6cb;
+}
+
+.error {
+	color: red;
+	background: #f8d7da;
+	border: 1px solid #f5c6cb;
+}

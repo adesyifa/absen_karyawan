@@ -1,0 +1,23 @@
+.custom-btn {
+    background-color: #B9B28A !important;
+    color: #181819 !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .custom-btn:hover {
+    background-color: #A8A078;
+  }
+  
+  .breadcrumb-item a {
+    color: #B9B28A;
+    text-decoration: none; 
+  }
+  
+  .breadcrumb-item a:hover {
+    color: #7c754c;
+  }
+  

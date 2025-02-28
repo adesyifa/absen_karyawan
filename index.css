@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout Utama */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Bagian Kiri */
+.left {
+    width: 50%;
+    background-color: #fdf6e3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 80px;
+}
+
+/* Header (Logo + Nama Aplikasi) */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    height: 60px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Teks Selamat Datang */
+.welcome-text {
+    font-size: 60px;
+    font-weight: bold;
+    color: #000;
+    max-width: 60%;
+}
+
+/* Bagian Kanan */
+.right {
+    width: 50%;
+    background-color: #fcedc2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Kotak Login */
+.login-box {
+    background: white;
+    padding: 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 600px;
+}
+
+.login-box h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Tombol Login */
+.button {
+    display: block;
+    text-decoration: none;
+    background-color: #b5a678;
+    color: black;
+    padding: 22px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left, .right {
+        width: 100%;
+        text-align: center;
+        padding: 40px 20px;
+        align-items: center;
+    }
+
+    .header {
+        position: static;
+        justify-content: center;
+    }
+
+    .welcome-text {
+        max-width: 100%;
+        text-align: center;
+    }
+}
