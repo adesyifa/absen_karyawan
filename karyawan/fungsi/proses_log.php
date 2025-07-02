@@ -10,7 +10,11 @@ class login_web
 		$pass = md5($_POST['pass']);
 
 		// proses masuk
-		$login = mysqli_query($this->koneksi, "SELECT * FROM tb_karyawan WHERE username = '$user' AND password = '$pass'");
+		$login = mysqli_query($this->koneksi, "
+		    SELECT * FROM tb_karyawan 
+		    WHERE (username = '$user' OR nama = '$user' OR kontak = '$user')
+		    AND password = '$pass'
+		");
 		$cek = mysqli_num_rows($login);
 		$r = mysqli_fetch_array($login);
 		// jika ketemu
@@ -19,7 +23,9 @@ class login_web
 			
 			session_start();
 			$_SESSION['idabsen2'] = $r['id'];
-			header("location: index.php?m=awal");
+			$_SESSION['adm'] = $r; // <-- Tambahkan baris ini!
+			header("Location: awal.php");
+			exit;
 		}else{
 			echo '<script>alert("Maaf, coba lagi")</script>';
 		}

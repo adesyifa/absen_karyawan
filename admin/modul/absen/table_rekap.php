@@ -14,53 +14,75 @@
                 <th>Tanggal</th>
                 <th>Bulan</th>
                 <th>Kehadiran</th>
-                <th>Status</th>
+                <th>alasan</th>
                 <th>keterangan</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            $no = 1;
-             foreach ($query as $key): ?>
-            <tr>
-                <td><?=$no++;?></td>
-                <td><?=$key['nip'];?></td>
-                <td><?=$key['nama'];?></td>
-                <td><?=$key['tanggal'];?></td>
-                <td><?=$key['bulan']?></td>
-                <td>
-                    <?php 
-                                if ($key['kehadiran']=="Hadir") {
-                                  echo '<b style="color: blue;">Hadir</b>';
-                                }else{
-          
-                                ?>
-                                <strong><a href="?m=absen&s=keterangan1&nip=<?= $key['nip']; ?>&tanggal=<?=$key['tanggal'];?>&nama=<?=$key['nama'];?>"style="color: red;">Tidak Hadir</a></strong>
+<?php
+$no = 1;
+// 1. Tampilkan data dari tb_absen
+foreach ($query as $key): ?>
+<tr>
+    <td><?= $no++; ?></td>
+    <td><?= $key['nip']; ?></td>
+    <td><?= $key['nama']; ?></td>
+    <td><?= $key['tanggal']; ?></td>
+    <td><?= $key['bulan']; ?></td>
+    <td>
+        <?php
+        if (!$key['jam'] || $key['jam'] == '00:00:00') {
+            echo '-';
+        } else if (strtotime($key['jam']) > strtotime('08:00:00')) {
+            echo '<b style="color: red;">Telat</b>';
+        } else {
+            echo '<b style="color: green;">Tepat Waktu</b>';
+        }
+        ?>
+    </td>
+    <td>
+        <?php
+        // Ambil alasan dan keterangan dari tb_keterangan berdasarkan nip & tanggal
+        $nip = $key['nip'];
+        $tanggal = $key['tanggal'];
+        $q_ket = mysqli_query($koneksi, "SELECT alasan, keterangan FROM tb_keterangan WHERE nip='$nip' AND tanggal='$tanggal' LIMIT 1");
+        $alasan = '-';
+        $keterangan = '-';
+        if ($row_ket = mysqli_fetch_assoc($q_ket)) {
+            $alasan = $row_ket['alasan'];
+            $keterangan = $row_ket['keterangan'];
+        }
+        echo $alasan;
+        ?>
+    </td>
+    <td>
+        <?php echo $keterangan; ?>
+    </td>
+</tr>
+<?php endforeach; ?>
 
-                              <?php } ?>
-                </td>
-                <td>
-                      <?php 
-                                // $jam_masuk = "0800";
-                                $select_jam = mysqli_query($koneksi, "SELECT * FROM jam_masuk");
-                                $jam_masuk = mysqli_fetch_array($select_jam);
-                                if ($key['jam2'] > $jam_masuk['jam_masuk']) {
-                                  echo '<b style="color: red;">telat</b>';
-                                }else if($key['keterangan'] != "null"){
-                                  echo '<b style="color: red;">-</b>';
-                                }else if($key['keterangan'] != "izin"){
-                                  echo '<b style="color: green;">-</b>';
-                                }else{
-                                  echo '<b style="color: green;">tepat waktu</b>';
-                                }
-
-                                 ?>
-                </td>
-                <td><?=$key['keterangan']?></td>
-            </tr>
-                  <?php endforeach; ?>
-           
-           
+<?php
+// 2. Tampilkan data tb_keterangan yang belum ada di tb_absen
+$q_ket_only = mysqli_query($koneksi, "
+    SELECT * FROM tb_keterangan 
+    WHERE bulan='$bulan' 
+      AND (nip, tanggal) NOT IN (
+        SELECT nip, tanggal FROM tb_absen WHERE bulan='$bulan' AND tahun='$tahun'
+      )
+");
+while ($key = mysqli_fetch_assoc($q_ket_only)): ?>
+<tr>
+    <td><?= $no++; ?></td>
+    <td><?= $key['nip']; ?></td>
+    <td><?= $key['nama']; ?></td>
+    <td><?= $key['tanggal']; ?></td>
+    <td><?= $key['bulan']; ?></td>
+    <td>-</td>
+    <td><?= $key['alasan'] ? $key['alasan'] : '-'; ?></td>
+    <td><?= $key['keterangan'] ? $key['keterangan'] : '-'; ?></td>
+</tr>
+<?php endwhile; ?>
+</tbody>
     </table>
    
 				</div>	

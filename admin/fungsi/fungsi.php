@@ -259,20 +259,16 @@ function hapus_keterangan()
 {
 	global $koneksi;
 	$id = $_POST['id'];
-
-	// hapus foto
-	$select = mysqli_query($koneksi, "SELECT * FROM tb_absen WHERE id='$id'");
-	$r = mysqli_fetch_array($select);
-	$hapus_foto = $r['foto'];
-
-	unlink("img/keterangan/$hapus_foto");
-	$delete = mysqli_query($koneksi, "DELETE FROM tb_absen WHERE id='$id'");
-
-	if ($delete) {
-		echo '<script>alert("data sudah dihapus!")</script>';
-	}
-
-
+    $select = mysqli_query($koneksi, "SELECT * FROM tb_keterangan WHERE id='$id'");
+    $r = mysqli_fetch_array($select);
+    $hapus_foto = $r['foto'];
+    if ($hapus_foto != "") {
+        @unlink("img/karyawan/$hapus_foto");
+    }
+    $delete = mysqli_query($koneksi, "DELETE FROM tb_keterangan WHERE id='$id'");
+    if ($delete) {
+        echo '<script>alert("Data keterangan sudah dihapus!")</script>';
+    }
 }
 
 // function keterangan satu
@@ -280,9 +276,7 @@ function hapus_keterangan()
 function select_keterangan1(){
 	global $koneksi;
 	$nip = $_GET['nip'];
-	$tanggal = $_GET['tanggal'];
-	return mysqli_query($koneksi, "SELECT * FROM tb_absen WHERE nip='$nip' AND tanggal='$tanggal'");
-
+	return mysqli_query($koneksi, "SELECT * FROM tb_keterangan WHERE nip='$nip' ORDER BY tanggal DESC");
 }
 
 // select rekap

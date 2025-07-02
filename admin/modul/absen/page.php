@@ -78,8 +78,6 @@
                                                 <th>Jam masuk</th>
                                                 <th>Jam pulang</th>
                                                 <th>Kehadiran</th>
-                                                <th>Keterangan</th>
-                                                <th>status</th>
                                                 <th>bukti</th>
                                                 <th>aksi</th>
                                                

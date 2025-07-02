@@ -57,23 +57,23 @@ if (isset($_POST['hapus'])) {
       <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label>Username</label>
-          <input type="text" class="form-control" name="username">
+          <input type="text" class="form-control" name="username" required>
         </div>
          <div class="form-group">
           <label>Password</label>
-          <input type="text" class="form-control" name="password">
+          <input type="text" class="form-control" name="password" required>
         </div>
          <div class="form-group">
           <label>Nama</label>
-          <input type="text" class="form-control" name="nama">
+          <input type="text" class="form-control" name="nama" required>
         </div>
          <div class="form-group">
           <label>Email</label>
-          <input type="text" class="form-control" name="kontak">
+          <input type="email" class="form-control" name="kontak" required>
         </div>
          <div class="form-group">
           <label>Foto</label>
-          <input type="file" class="form-control" name="foto">
+          <input type="file" class="form-control" name="foto" required>
         </div>
         <div class="modal-footer">
         <button type="submit" name="simpan" class="btn btn-primary">Save changes</button>

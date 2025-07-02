@@ -59,40 +59,40 @@ if (isset($_POST['hapus'])) {
       <form action="" method="POST" enctype="multipart/form-data">
       	<div class="form-group">
           <label>NIP</label>
-          <input type="text" class="form-control" name="nip">
+          <input type="text" class="form-control" name="nip" required>
         </div>
         <div class="form-group">
           <label>Username</label>
-          <input type="text" class="form-control" name="username">
+          <input type="text" class="form-control" name="username" required>
         </div>
          <div class="form-group">
           <label>Password</label>
-          <input type="text" class="form-control" name="password">
+          <input type="text" class="form-control" name="password" required>
         </div>
          <div class="form-group">
           <label>Nama</label>
-          <input type="text" class="form-control" name="nama">
+          <input type="text" class="form-control" name="nama" required>
         </div>
          <div class="form-group">
           <label>Tempat Lahir</label>
-          <input type="text" class="form-control" name="tempat_lahir">
+          <input type="text" class="form-control" name="tempat_lahir" required>
         </div>
            <div class="form-group">
           <label>Tanggal Lahir</label>
-          <input type="date" class="form-control" name="tanggal_lahir">
+          <input type="date" class="form-control" name="tanggal_lahir" required>
         </div>
            <div class="form-group">
           <label>Alamat</label>
-         <textarea name="alamat" class="form-control"></textarea>
+         <textarea name="alamat" class="form-control" required></textarea>
         </div>
            <div class="form-group">
           <label>Email</label>
-          <input type="text" class="form-control" name="email">
+          <input type="email" class="form-control" name="email" required>
         </div>
 
          <div class="form-group">
           <label>Foto</label>
-          <input type="file" class="form-control" name="foto">
+          <input type="file" class="form-control" name="foto" required>
         </div>
         <div class="modal-footer">
         <button type="submit" name="simpan" class="custom-btn">Save changes</button>
